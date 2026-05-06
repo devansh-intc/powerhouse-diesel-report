@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Powerhouse Diesel - April 2026 Performance Review</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary:    #5F9598;
+    --accent:     #B6D7D8;
+    --dark:       #1e2328;
+    --bg:         #FAFAFA;
+    --card:       #FFFFFF;
+    --border:     #CCCCCC;
+    --text:       #1e2328;
+    --muted:      #6C6C6C;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Archivo', sans-serif; background: var(--bg); color: var(--text);
+         font-size: 11pt; line-height: 1.6; }
+
+  header { background: linear-gradient(135deg, var(--dark) 0%, #2a3038 100%);
+           color: #fff; padding: 40px 48px; }
+  header .client-line { font-size: 9.5pt; opacity: 0.7; letter-spacing: 1.5px;
+                        text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
+  header h1 { font-family: 'Playfair Display', serif; font-size: 28pt; font-weight: 700;
+              letter-spacing: -0.5px; line-height: 1.15; }
+  header p { margin-top: 8px; font-size: 11pt; opacity: 0.85; }
+  header a { color: var(--accent); text-decoration: none; }
+  .badge { display: inline-block; background: rgba(95,149,152,0.3); border: 1px solid rgba(95,149,152,0.5);
+           border-radius: 4px; padding: 4px 12px; font-size: 9pt; margin-top: 14px;
+           font-weight: 600; letter-spacing: 0.3px; margin-right: 6px; }
+
+  main { max-width: 1100px; margin: 32px auto; padding: 0 24px 64px; }
+
+  .section-title { font-family: 'Playfair Display', serif; font-size: 18pt; font-weight: 700;
+                   color: var(--primary); margin: 40px 0 16px;
+                   border-left: 4px solid var(--accent); padding-left: 14px; }
+  .section-sub { font-family: 'Playfair Display', serif; font-size: 13pt; font-weight: 700;
+                 color: var(--dark); margin: 22px 0 10px; }
+
+  /* TLDR / executive callout */
+  .tldr { background: linear-gradient(135deg, var(--accent) 0%, #d8e9ea 100%);
+          border-radius: 12px; padding: 28px 32px; margin-bottom: 28px;
+          border-left: 6px solid var(--primary); }
+  .tldr h2 { font-family: 'Playfair Display', serif; font-size: 17pt; color: var(--dark);
+             margin-bottom: 12px; }
+  .tldr p { font-size: 11pt; margin-bottom: 10px; }
+  .tldr p:last-child { margin-bottom: 0; }
+  .tldr strong { color: var(--dark); }
+  .tldr ul { margin: 10px 0 0 22px; }
+  .tldr li { margin-bottom: 6px; }
+
+  /* KPI grid */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 22px; }
+  .kpi-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+              padding: 18px; border-top: 3px solid var(--primary);
+              box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .kpi-card .kpi-label { font-size: 9pt; font-weight: 600; color: var(--muted);
+                         text-transform: uppercase; letter-spacing: 0.6px; }
+  .kpi-card .kpi-value { font-size: 22pt; font-weight: 800; color: var(--dark); margin-top: 4px;
+                         font-variant-numeric: tabular-nums; }
+  .kpi-card .kpi-sub { font-size: 9.5pt; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+  .kpi-card.up { border-top-color: var(--primary); }
+  .kpi-card.flat { border-top-color: var(--accent); }
+  .delta-up { color: #166534; font-weight: 700; }
+  .delta-down { color: #92400E; font-weight: 700; }
+  .delta-flat { color: var(--muted); font-weight: 600; }
+
+  /* Tables */
+  .table-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+                overflow: hidden; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  table { width: 100%; border-collapse: collapse; }
+  thead { background: var(--dark); color: #fff; }
+  thead th { padding: 11px 14px; font-size: 9pt; font-weight: 600;
+             text-align: left; letter-spacing: 0.3px; text-transform: uppercase; }
+  thead th.num { text-align: right; }
+  tbody tr { border-bottom: 1px solid #E8E8E8; }
+  tbody tr:nth-child(even) { background: #FAFAFA; }
+  tbody tr:nth-child(odd) { background: #FFFFFF; }
+  tbody tr:last-child { border-bottom: none; }
+  td { padding: 10px 14px; font-size: 10pt; vertical-align: top; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.label { font-weight: 600; }
+  td.note { color: var(--muted); font-size: 9.5pt; line-height: 1.4; }
+
+  /* Phase / window cards */
+  .phase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px; }
+  .phase-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+                padding: 18px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                border-top: 3px solid var(--accent); }
+  .phase-card.live { border-top-color: var(--primary); }
+  .phase-card .phase-label { font-size: 9pt; font-weight: 700; color: var(--muted);
+                              text-transform: uppercase; letter-spacing: 0.6px; }
+  .phase-card .phase-window { font-family: 'Playfair Display', serif; font-size: 12pt; font-weight: 700;
+                               color: var(--dark); margin-top: 4px; }
+  .phase-card ul { list-style: none; margin-top: 10px; }
+  .phase-card li { font-size: 10pt; padding: 4px 0; border-bottom: 1px dashed #EAEAEA;
+                   display: flex; justify-content: space-between; }
+  .phase-card li:last-child { border-bottom: none; }
+  .phase-card li span:last-child { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+  /* Insight cards */
+  .insight-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+                  padding: 20px 24px; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                  border-left: 4px solid var(--primary); }
+  .insight-card h3 { font-family: 'Playfair Display', serif; font-size: 13pt; font-weight: 700;
+                     color: var(--primary); margin-bottom: 8px; }
+  .insight-card p { font-size: 10.5pt; margin-bottom: 6px; }
+  .insight-card ul { margin-left: 18px; margin-top: 6px; }
+  .insight-card li { font-size: 10.5pt; margin-bottom: 5px; }
+
+  /* Two-column compare */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
+  .compare-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+                  padding: 20px 22px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                  border-top: 3px solid var(--primary); }
+  .compare-card h3 { font-family: 'Playfair Display', serif; font-size: 13pt; font-weight: 700;
+                     margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid var(--accent);
+                     color: var(--dark); }
+  .compare-card .verdict { display: inline-block; margin-top: 8px; font-size: 9.5pt;
+                            font-weight: 700; padding: 3px 10px; border-radius: 4px;
+                            background: var(--accent); color: var(--dark); letter-spacing: 0.3px; }
+  .compare-card.win .verdict { background: var(--primary); color: #fff; }
+  .compare-card ul { list-style: none; margin: 6px 0; }
+  .compare-card li { font-size: 10pt; padding: 5px 0; border-bottom: 1px dashed #EAEAEA;
+                     display: flex; justify-content: space-between; }
+  .compare-card li:last-child { border-bottom: none; }
+  .compare-card li span:last-child { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+  /* Steps / numbered scaling */
+  .steps-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+                padding: 24px 28px; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .step { display: grid; grid-template-columns: 48px 1fr; gap: 16px; padding: 14px 0;
+          border-bottom: 1px solid #EEE; }
+  .step:last-child { border-bottom: none; }
+  .step-num { font-family: 'Playfair Display', serif; font-size: 22pt; font-weight: 800;
+              color: var(--primary); line-height: 1; text-align: center; }
+  .step h4 { font-family: 'Playfair Display', serif; font-size: 12.5pt; font-weight: 700;
+             color: var(--dark); margin-bottom: 4px; }
+  .step p { font-size: 10pt; color: var(--text); margin-bottom: 4px; }
+  .step ul { margin-left: 18px; margin-top: 4px; }
+  .step li { font-size: 10pt; margin-bottom: 3px; }
+
+  /* Takeaway grid */
+  .takeaway-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 18px; }
+  .takeaway { background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+              padding: 14px 18px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); display: flex; gap: 12px;
+              align-items: flex-start; }
+  .takeaway .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--primary);
+                   margin-top: 6px; flex-shrink: 0; }
+  .takeaway p { font-size: 10pt; line-height: 1.5; }
+  .takeaway strong { color: var(--dark); }
+
+  /* Footer */
+  footer { margin-top: 40px; padding-top: 24px; border-top: 2px solid var(--accent);
+           text-align: center; color: var(--muted); font-size: 9.5pt; }
+  footer strong { color: var(--primary); font-family: 'Playfair Display', serif;
+                  font-size: 11pt; letter-spacing: 0.3px; }
+  footer a { color: var(--primary); text-decoration: none; }
+
+  @media (max-width: 800px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .phase-grid { grid-template-columns: 1fr; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .takeaway-grid { grid-template-columns: 1fr; }
+    header { padding: 28px 24px; }
+    header h1 { font-size: 22pt; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="client-line">Performance Review &nbsp;·&nbsp; April 2026</div>
+  <h1>Powerhouse Diesel - Account Performance &amp; Scaling Plan</h1>
+  <p><a href="https://www.powerhouse-diesel.com/" target="_blank">powerhouse-diesel.com</a> &nbsp;·&nbsp; April 2026 vs March 2026</p>
+  <span class="badge">Profit-led Scaling</span>
+  <span class="badge">PMax Restructure</span>
+  <span class="badge">MER +44%</span>
+</header>
+
+<main>
+
+  <!-- 1. Executive Summary -->
+  <div class="tldr">
+    <h2>Executive Summary</h2>
+    <p>April marked a shift from aggressive scaling to a <strong>profit-focused, efficiency-driven strategy</strong>. Despite a ~30% reduction in ad spend, the account maintained stable Shopify revenue (~$610K) and improved overall profitability.</p>
+    <p>The newly launched PMax campaigns played a key role in:</p>
+    <ul>
+      <li>Eliminating inefficient spend</li>
+      <li>Improving MER across vendor groups</li>
+      <li>Driving incremental growth from previously underutilized segments</li>
+    </ul>
+    <p style="margin-top:12px;"><strong>Bottom line:</strong> same revenue with lower spend, profitability up (+8% net profit), account is now efficient, stable, and ready to scale.</p>
+  </div>
+
+  <!-- 2. Overall Performance -->
+  <h2 class="section-title">Overall Performance Overview</h2>
+  <p style="color: var(--muted); margin-bottom: 14px; font-size: 10.5pt;">Key metrics, April vs March 2026.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card flat">
+      <div class="kpi-label">Ad Spend</div>
+      <div class="kpi-value">$19.4K</div>
+      <div class="kpi-sub"><span class="delta-down">↓ 30%</span> vs March</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Shopify Revenue</div>
+      <div class="kpi-value">$610.6K</div>
+      <div class="kpi-sub"><span class="delta-flat">Flat</span> vs March</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">ROAS</div>
+      <div class="kpi-value">20.04</div>
+      <div class="kpi-sub"><span class="delta-up">↑</span> vs March</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">MER</div>
+      <div class="kpi-value">31.45</div>
+      <div class="kpi-sub"><span class="delta-up">↑ 44%</span> vs March</div>
+    </div>
+    <div class="kpi-card flat">
+      <div class="kpi-label">Purchase Value</div>
+      <div class="kpi-value">$389K</div>
+      <div class="kpi-sub"><span class="delta-down">↓</span> vs March</div>
+    </div>
+    <div class="kpi-card flat">
+      <div class="kpi-label">Gross Profit</div>
+      <div class="kpi-value">$96.1K</div>
+      <div class="kpi-sub"><span class="delta-down">Slightly down</span> vs March</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Net Profit</div>
+      <div class="kpi-value">$76.7K</div>
+      <div class="kpi-sub"><span class="delta-up">↑ 8%</span> vs March</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Account Status</div>
+      <div class="kpi-value" style="font-size:14pt;">Ready to Scale</div>
+      <div class="kpi-sub">Stable, efficient, controlled</div>
+    </div>
+  </div>
+
+  <div class="insight-card">
+    <h3>Performance Interpretation</h3>
+    <ul>
+      <li>Reduced spend did not impact revenue, indicating inefficiency was removed.</li>
+      <li>Higher MER reflects better capital efficiency.</li>
+      <li>Increased net profit reflects stronger bottom-line performance.</li>
+    </ul>
+    <p style="margin-top:10px;"><strong>Summary:</strong> the account is generating maximum output with optimized input, a strong foundation for scaling.</p>
+  </div>
+
+  <!-- 3. PMax Performance -->
+  <h2 class="section-title">New PMax Campaign Performance</h2>
+
+  <h3 class="section-sub">Top Brand PMax (Top Performing Products)</h3>
+  <div class="phase-grid">
+    <div class="phase-card">
+      <div class="phase-label">Pre-Launch</div>
+      <div class="phase-window">Mar 1 - 13</div>
+      <ul>
+        <li><span>Revenue</span><span>$130,398</span></li>
+        <li><span>Spend</span><span>$4,901</span></li>
+        <li><span>MER</span><span>26.6x</span></li>
+        <li><span>Rev / day</span><span>$10,031</span></li>
+      </ul>
+    </div>
+    <div class="phase-card live">
+      <div class="phase-label">Window 1</div>
+      <div class="phase-window">Mar 14 - 26</div>
+      <ul>
+        <li><span>Revenue</span><span>$126,777</span></li>
+        <li><span>Spend</span><span>~$3,237</span></li>
+        <li><span>MER</span><span>~39.2x</span></li>
+        <li><span>Rev / day</span><span>$9,752</span></li>
+      </ul>
+    </div>
+    <div class="phase-card live">
+      <div class="phase-label">Window 2</div>
+      <div class="phase-window">Mar 27 - Apr 8</div>
+      <ul>
+        <li><span>Revenue</span><span>$122,227</span></li>
+        <li><span>Spend</span><span>~$2,968</span></li>
+        <li><span>MER</span><span>~41.2x</span></li>
+        <li><span>Rev / day</span><span>$9,402</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="insight-card">
+    <h3>Insight: Top Brand PMax</h3>
+    <ul>
+      <li>Revenue remained stable while spend decreased significantly.</li>
+      <li>MER improved consistently across phases.</li>
+    </ul>
+    <p style="margin-top:8px;"><strong>Summary:</strong> Top Brand PMax is an efficiency-driven campaign, reducing wasted spend without driving incremental revenue.</p>
+  </div>
+
+  <h3 class="section-sub">Low Spend Brand PMax (Low Spend, High MER Products)</h3>
+  <div class="phase-grid">
+    <div class="phase-card">
+      <div class="phase-label">Pre-Launch</div>
+      <div class="phase-window">Mar 1 - 13</div>
+      <ul>
+        <li><span>Revenue</span><span>$66,625</span></li>
+        <li><span>Spend</span><span>$2,032</span></li>
+        <li><span>MER</span><span>32.8x</span></li>
+        <li><span>Rev / day</span><span>$5,125</span></li>
+      </ul>
+    </div>
+    <div class="phase-card live">
+      <div class="phase-label">Window 1</div>
+      <div class="phase-window">Mar 14 - 26</div>
+      <ul>
+        <li><span>Revenue</span><span>$41,920</span></li>
+        <li><span>Spend</span><span>~$1,218</span></li>
+        <li><span>MER</span><span>~34.4x</span></li>
+        <li><span>Rev / day</span><span>$3,225</span></li>
+      </ul>
+    </div>
+    <div class="phase-card live">
+      <div class="phase-label">Window 2</div>
+      <div class="phase-window">Mar 27 - Apr 8</div>
+      <ul>
+        <li><span>Revenue</span><span>$75,337</span></li>
+        <li><span>Spend</span><span>~$1,077</span></li>
+        <li><span>MER</span><span>~69.9x</span></li>
+        <li><span>Rev / day</span><span>$5,795</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="insight-card">
+    <h3>Insight: Low Spend Brand PMax</h3>
+    <ul>
+      <li>Learning phase dip followed by strong recovery.</li>
+      <li>Revenue exceeded pre-launch levels with reduced spend.</li>
+      <li>MER more than doubled.</li>
+    </ul>
+    <p style="margin-top:8px;"><strong>Summary:</strong> Low Spend PMax is the primary growth engine, delivering both revenue uplift and efficiency gains.</p>
+  </div>
+
+  <div class="insight-card">
+    <h3>Combined Campaign Impact</h3>
+    <ul>
+      <li>Revenue increased while spend decreased.</li>
+      <li>Efficiency improved across all targeted segments.</li>
+    </ul>
+    <p style="margin-top:8px;"><strong>Summary:</strong> the campaign structure is now optimized to deliver higher returns at lower cost.</p>
+  </div>
+
+  <!-- 4. March vs April Vendor Comparison -->
+  <h2 class="section-title">March vs April: Vendor Group Comparison</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h3>Top Brand Vendors</h3>
+      <ul>
+        <li><span>Revenue</span><span>~$289.7K → ~$286.3K</span></li>
+        <li><span>Revenue change</span><span>Flat</span></li>
+        <li><span>Spend</span><span class="delta-down">↓ 20%</span></li>
+        <li><span>MER</span><span class="delta-up">↑ 23%</span></li>
+      </ul>
+      <span class="verdict">Efficient, not growth-driving</span>
+    </div>
+
+    <div class="compare-card win">
+      <h3>Low Spend Vendors</h3>
+      <ul>
+        <li><span>Revenue</span><span>$123.9K → $196.8K</span></li>
+        <li><span>Revenue change</span><span class="delta-up">↑ 59%</span></li>
+        <li><span>Spend</span><span class="delta-down">↓ 31%</span></li>
+        <li><span>MER</span><span class="delta-up">~33x → ~77x</span></li>
+      </ul>
+      <span class="verdict">Biggest success driver</span>
+    </div>
+  </div>
+
+  <div class="insight-card">
+    <h3>Combined Impact</h3>
+    <ul>
+      <li>Revenue: <span class="delta-up">↑ 16.8%</span></li>
+      <li>Spend: <span class="delta-down">↓ 23.4%</span></li>
+    </ul>
+    <p style="margin-top:8px;"><strong>Summary:</strong> the ideal performance outcome, scaling revenue while reducing spend, driven primarily by Low Spend PMax.</p>
+  </div>
+
+  <!-- 5. Campaign Breakdown -->
+  <h2 class="section-title">Campaign Performance Breakdown</h2>
+
+  <h3 class="section-sub">Primary Revenue Drivers</h3>
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Campaign</th>
+          <th class="num">Spend</th>
+          <th class="num">Revenue</th>
+          <th class="num">ROAS</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">All Products PMax</td>
+          <td class="num">~$7K</td>
+          <td class="num">~$135K</td>
+          <td class="num">~19.4x</td>
+          <td class="note">Core revenue engine</td>
+        </tr>
+        <tr>
+          <td class="label">Shop PMax</td>
+          <td class="num">~$6.7K</td>
+          <td class="num">~$122K</td>
+          <td class="num">~18.3x</td>
+          <td class="note">Catalog-wide volume driver</td>
+        </tr>
+        <tr>
+          <td class="label">RMK PMax (Retargeting)</td>
+          <td class="num">~$1.4K</td>
+          <td class="num">~$37.6K</td>
+          <td class="num">~26.4x</td>
+          <td class="note">High-efficiency retargeting</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="section-sub">Supporting Campaigns</h3>
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Campaign</th>
+          <th class="num">ROAS / MER</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">Branded Search</td>
+          <td class="num">~53x ROAS</td>
+          <td class="note">High-intent demand capture</td>
+        </tr>
+        <tr>
+          <td class="label">Low Spend PMax</td>
+          <td class="num">High MER</td>
+          <td class="note">Scaling efficiently, growth lever</td>
+        </tr>
+        <tr>
+          <td class="label">Top Brand PMax</td>
+          <td class="num">Strong MER</td>
+          <td class="note">Lower ROAS, strong MER contribution</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="insight-card">
+    <h3>Channel Mix Insight</h3>
+    <p>Revenue is concentrated in a few high-performing core campaigns, with retargeting and branded search offering the highest efficiency upside.</p>
+  </div>
+
+  <!-- 6. Key Takeaways -->
+  <h2 class="section-title">Key Takeaways</h2>
+  <div class="takeaway-grid">
+    <div class="takeaway"><div class="dot"></div><p><strong>MER improved significantly</strong> across the account (+44%).</p></div>
+    <div class="takeaway"><div class="dot"></div><p><strong>Low Spend PMax</strong> is the main revenue growth driver.</p></div>
+    <div class="takeaway"><div class="dot"></div><p><strong>Top Brand PMax</strong> improves cost efficiency.</p></div>
+    <div class="takeaway"><div class="dot"></div><p><strong>Learning phase volatility</strong> has stabilized.</p></div>
+    <div class="takeaway"><div class="dot"></div><p><strong>Retargeting and branded</strong> remain under-scaled opportunities.</p></div>
+    <div class="takeaway"><div class="dot"></div><p><strong>High-efficiency, high-control</strong> structure now in place.</p></div>
+  </div>
+
+  <!-- 7. Scaling Strategy -->
+  <h2 class="section-title">Scaling Strategy &amp; Next Steps</h2>
+
+  <div class="insight-card">
+    <h3>Current Observation</h3>
+    <p>Both Top Brand PMax and Low Spend Brand PMax are operating at relatively low spend due to budget limitations, despite showing strong efficiency (high MER).</p>
+    <p>Performance indicates these campaigns are <strong>not constrained by performance, but by budget</strong>, making them strong candidates for scaling.</p>
+  </div>
+
+  <div class="steps-card">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <h4>Scale Low Spend Brand PMax (Priority)</h4>
+        <ul>
+          <li>Already showing strong growth and efficiency.</li>
+          <li>Budget has been increased to accelerate momentum.</li>
+          <li>Expected to continue driving incremental revenue at high MER.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <h4>Gradually Scale Top Brand PMax</h4>
+        <ul>
+          <li>Strong MER improvement (~26x → ~40x).</li>
+          <li>Proven ability to maintain revenue with lower spend.</li>
+          <li>Strategy: controlled expansion without efficiency loss.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <h4>Increase Investment in All Products PMax</h4>
+        <ul>
+          <li>Highest spending campaign in the account.</li>
+          <li>Consistently strong ROAS (~19x).</li>
+          <li>Key driver of overall revenue.</li>
+          <li>Strategy: incremental budget increases to push top-line growth while maintaining efficiency.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div>
+        <h4>Scale Brand Search Campaigns</h4>
+        <ul>
+          <li>Focus on capturing high-intent demand.</li>
+          <li>Complements PMax by strengthening lower-funnel performance.</li>
+          <li>Strategy: gradually increase budget to improve coverage and conversions.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-card">
+    <h3>Overall Scaling Approach</h3>
+    <ul>
+      <li>Move account spend toward <strong>$8K - $9K per week</strong> range.</li>
+      <li>Prioritize high MER and high ROAS campaigns.</li>
+      <li>Ensure scaling is controlled and efficiency-led, not aggressive.</li>
+    </ul>
+  </div>
+
+  <div class="tldr" style="margin-top: 24px;">
+    <h2>Summary &amp; Roles</h2>
+    <ul>
+      <li><strong>Low Spend PMax</strong> - primary growth lever</li>
+      <li><strong>Top Brand PMax</strong> - efficiency + controlled scaling</li>
+      <li><strong>All Products PMax</strong> - core revenue expansion driver</li>
+      <li><strong>Brand Search</strong> - demand capture + conversion support</li>
+    </ul>
+    <p style="margin-top:12px;">The account will be scaled in a structured, performance-led manner, ensuring top-line growth while maintaining strong MER control.</p>
+  </div>
+
+  <footer>
+    <p><strong>Interconnections</strong></p>
+    <p>Ecommerce Growth Strategy &nbsp;·&nbsp; <a href="https://theinterconnections.com">theinterconnections.com</a></p>
+    <p style="margin-top:6px;">Powerhouse Diesel - April 2026 Performance Review &nbsp;·&nbsp; Prepared May 2026</p>
+  </footer>
+
+</main>
+</body>
+</html>
