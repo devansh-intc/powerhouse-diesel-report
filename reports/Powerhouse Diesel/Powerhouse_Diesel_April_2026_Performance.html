@@ -38,19 +38,33 @@
                    color: var(--primary); margin: 40px 0 16px;
                    border-left: 4px solid var(--accent); padding-left: 14px; }
   .section-sub { font-family: 'Playfair Display', serif; font-size: 13pt; font-weight: 700;
-                 color: var(--dark); margin: 22px 0 10px; }
+                 color: var(--dark); margin: 22px 0 6px; }
+  .section-sub-meta { font-size: 10pt; color: var(--muted); margin-bottom: 12px;
+                       font-style: italic; }
+  .section-intro { font-size: 10.5pt; color: var(--muted); margin-bottom: 14px; }
 
-  /* TLDR / executive callout */
-  .tldr { background: linear-gradient(135deg, var(--accent) 0%, #d8e9ea 100%);
-          border-radius: 12px; padding: 28px 32px; margin-bottom: 28px;
-          border-left: 6px solid var(--primary); }
-  .tldr h2 { font-family: 'Playfair Display', serif; font-size: 17pt; color: var(--dark);
-             margin-bottom: 12px; }
-  .tldr p { font-size: 11pt; margin-bottom: 10px; }
-  .tldr p:last-child { margin-bottom: 0; }
-  .tldr strong { color: var(--dark); }
-  .tldr ul { margin: 10px 0 0 22px; }
-  .tldr li { margin-bottom: 6px; }
+  /* Hero callout - "What changed" */
+  .hero-callout { background: linear-gradient(135deg, var(--accent) 0%, #d8e9ea 100%);
+                   border-radius: 14px; padding: 32px 36px; margin-bottom: 32px;
+                   border-left: 6px solid var(--primary); }
+  .hero-callout .eyebrow { font-size: 9.5pt; font-weight: 700; color: var(--primary);
+                            text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 6px; }
+  .hero-callout h2 { font-family: 'Playfair Display', serif; font-size: 22pt; color: var(--dark);
+                      line-height: 1.2; margin-bottom: 16px; }
+  .hero-callout p { font-size: 11pt; margin-bottom: 12px; line-height: 1.65; }
+  .hero-callout p:last-child { margin-bottom: 0; }
+  .hero-callout strong { color: var(--dark); }
+
+  .hero-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+                margin: 18px 0 6px; }
+  .hero-stat { background: rgba(255,255,255,0.65); border: 1px solid rgba(95,149,152,0.3);
+                border-radius: 8px; padding: 12px 14px; }
+  .hero-stat .hs-label { font-size: 8.5pt; font-weight: 700; color: var(--muted);
+                          text-transform: uppercase; letter-spacing: 0.6px; }
+  .hero-stat .hs-value { font-family: 'Playfair Display', serif; font-size: 18pt; font-weight: 800;
+                          color: var(--dark); margin-top: 2px; line-height: 1.1;
+                          font-variant-numeric: tabular-nums; }
+  .hero-stat .hs-sub { font-size: 9pt; color: var(--muted); margin-top: 2px; }
 
   /* KPI grid */
   .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 22px; }
@@ -62,7 +76,6 @@
   .kpi-card .kpi-value { font-size: 22pt; font-weight: 800; color: var(--dark); margin-top: 4px;
                          font-variant-numeric: tabular-nums; }
   .kpi-card .kpi-sub { font-size: 9.5pt; color: var(--muted); margin-top: 4px; line-height: 1.4; }
-  .kpi-card.up { border-top-color: var(--primary); }
   .kpi-card.flat { border-top-color: var(--accent); }
   .delta-up { color: #166534; font-weight: 700; }
   .delta-down { color: #92400E; font-weight: 700; }
@@ -117,8 +130,9 @@
                   padding: 20px 22px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
                   border-top: 3px solid var(--primary); }
   .compare-card h3 { font-family: 'Playfair Display', serif; font-size: 13pt; font-weight: 700;
-                     margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid var(--accent);
-                     color: var(--dark); }
+                     margin-bottom: 4px; color: var(--dark); }
+  .compare-card .sub { font-size: 9.5pt; color: var(--muted); padding-bottom: 10px;
+                        margin-bottom: 8px; border-bottom: 2px solid var(--accent); font-style: italic; }
   .compare-card .verdict { display: inline-block; margin-top: 8px; font-size: 9.5pt;
                             font-weight: 700; padding: 3px 10px; border-radius: 4px;
                             background: var(--accent); color: var(--dark); letter-spacing: 0.3px; }
@@ -129,19 +143,26 @@
   .compare-card li:last-child { border-bottom: none; }
   .compare-card li span:last-child { font-weight: 700; font-variant-numeric: tabular-nums; }
 
-  /* Steps / numbered scaling */
-  .steps-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-                padding: 24px 28px; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-  .step { display: grid; grid-template-columns: 48px 1fr; gap: 16px; padding: 14px 0;
-          border-bottom: 1px solid #EEE; }
-  .step:last-child { border-bottom: none; }
-  .step-num { font-family: 'Playfair Display', serif; font-size: 22pt; font-weight: 800;
-              color: var(--primary); line-height: 1; text-align: center; }
-  .step h4 { font-family: 'Playfair Display', serif; font-size: 12.5pt; font-weight: 700;
-             color: var(--dark); margin-bottom: 4px; }
-  .step p { font-size: 10pt; color: var(--text); margin-bottom: 4px; }
-  .step ul { margin-left: 18px; margin-top: 4px; }
-  .step li { font-size: 10pt; margin-bottom: 3px; }
+  /* Plan section */
+  .plan-headline { background: var(--dark); color: #fff; padding: 18px 24px;
+                    border-radius: 10px 10px 0 0; }
+  .plan-headline .eyebrow { font-size: 9pt; font-weight: 700; color: var(--accent);
+                             text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 4px; }
+  .plan-headline h3 { font-family: 'Playfair Display', serif; font-size: 16pt;
+                       font-weight: 700; line-height: 1.2; }
+  .plan-card { background: var(--card); border: 1px solid var(--border);
+               border-top: none; border-radius: 0 0 10px 10px;
+               padding: 24px 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+               margin-bottom: 18px; }
+  .plan-card h4 { font-family: 'Playfair Display', serif; font-size: 13pt; font-weight: 700;
+                   color: var(--primary); margin-bottom: 6px; margin-top: 14px; }
+  .plan-card h4:first-child { margin-top: 0; }
+  .plan-card p { font-size: 10.5pt; margin-bottom: 8px; }
+  .plan-card ul { margin-left: 20px; margin-top: 4px; margin-bottom: 8px; }
+  .plan-card li { font-size: 10.5pt; margin-bottom: 5px; }
+  .plan-card .status-pill { display: inline-block; background: var(--primary); color: #fff;
+                             padding: 3px 10px; border-radius: 4px; font-size: 9pt;
+                             font-weight: 700; letter-spacing: 0.3px; margin-bottom: 6px; }
 
   /* Takeaway grid */
   .takeaway-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 18px; }
@@ -162,11 +183,14 @@
 
   @media (max-width: 800px) {
     .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-strip { grid-template-columns: repeat(2, 1fr); }
     .phase-grid { grid-template-columns: 1fr; }
     .compare-grid { grid-template-columns: 1fr; }
     .takeaway-grid { grid-template-columns: 1fr; }
     header { padding: 28px 24px; }
     header h1 { font-size: 22pt; }
+    .hero-callout { padding: 24px; }
+    .hero-callout h2 { font-size: 18pt; }
   }
 </style>
 </head>
@@ -176,32 +200,54 @@
   <div class="client-line">Performance Review &nbsp;·&nbsp; April 2026</div>
   <h1>Powerhouse Diesel - Account Performance &amp; Scaling Plan</h1>
   <p><a href="https://www.powerhouse-diesel.com/" target="_blank">powerhouse-diesel.com</a> &nbsp;·&nbsp; April 2026 vs March 2026</p>
-  <span class="badge">Profit-led Scaling</span>
   <span class="badge">PMax Restructure</span>
   <span class="badge">MER +44%</span>
+  <span class="badge">Profit-led, ready to scale</span>
 </header>
 
 <main>
 
-  <!-- 1. Executive Summary -->
-  <div class="tldr">
-    <h2>Executive Summary</h2>
-    <p>April marked a shift from aggressive scaling to a <strong>profit-focused, efficiency-driven strategy</strong>. Despite a ~30% reduction in ad spend, the account maintained stable Shopify revenue (~$610K) and improved overall profitability.</p>
-    <p>The newly launched PMax campaigns played a key role in:</p>
-    <ul>
-      <li>Eliminating inefficient spend</li>
-      <li>Improving MER across vendor groups</li>
-      <li>Driving incremental growth from previously underutilized segments</li>
-    </ul>
-    <p style="margin-top:12px;"><strong>Bottom line:</strong> same revenue with lower spend, profitability up (+8% net profit), account is now efficient, stable, and ready to scale.</p>
+  <!-- HERO: What changed since March 14 -->
+  <div class="hero-callout">
+    <div class="eyebrow">What's Changed Since March 14</div>
+    <h2>Same revenue, materially lower cost. Now we redeploy that headroom into top-line growth.</h2>
+
+    <p>On <strong>March 14</strong> we restructured the PMax setup and launched the <strong>Underspent Brands PMax</strong>: a new campaign aimed at vendor brands that were converting efficiently in the catalog but had been receiving very little ad investment. It's the single biggest change in the account this quarter.</p>
+
+    <p>Through April, the restructure has produced a <strong>profit-led result</strong>. Spend came down ~30%, revenue held flat at ~$610.6K, MER moved from ~21.8 to <strong>31.45 (+44%)</strong>, and net profit lifted ~8%. Same top line, lower cost, healthier account.</p>
+
+    <div class="hero-strip">
+      <div class="hero-stat">
+        <div class="hs-label">Ad Spend</div>
+        <div class="hs-value"><span class="delta-down">- 30%</span></div>
+        <div class="hs-sub">~$19.4K in April</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-label">Revenue</div>
+        <div class="hs-value">Flat</div>
+        <div class="hs-sub">~$610.6K held</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-label">MER</div>
+        <div class="hs-value"><span class="delta-up">+ 44%</span></div>
+        <div class="hs-sub">31.45 in April</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-label">Net Profit</div>
+        <div class="hs-value"><span class="delta-up">+ 8%</span></div>
+        <div class="hs-sub">$76.7K in April</div>
+      </div>
+    </div>
+
+    <p style="margin-top:16px;">The original goal of this restructure was to grow top-line. The first wave of impact landed on profitability instead, which is the right order: <strong>get the unit economics right first, then scale</strong>. Now that profitability is locked in, the next move is to push that headroom back into the campaign that earned it. <strong>Scaling the Underspent Brands PMax is the focused next step</strong>, covered in the plan at the end of this report.</p>
   </div>
 
-  <!-- 2. Overall Performance -->
-  <h2 class="section-title">Overall Performance Overview</h2>
-  <p style="color: var(--muted); margin-bottom: 14px; font-size: 10.5pt;">Key metrics, April vs March 2026.</p>
+  <!-- 1. Overall Performance -->
+  <h2 class="section-title">1. Overall Performance Overview</h2>
+  <p class="section-intro">April 2026 vs March 2026. Deltas are shown only where we have a confirmed comparison number; figures without a prior-month value are reported as April-only.</p>
 
   <div class="kpi-grid">
-    <div class="kpi-card flat">
+    <div class="kpi-card">
       <div class="kpi-label">Ad Spend</div>
       <div class="kpi-value">$19.4K</div>
       <div class="kpi-sub"><span class="delta-down">↓ 30%</span> vs March</div>
@@ -212,29 +258,29 @@
       <div class="kpi-sub"><span class="delta-flat">Flat</span> vs March</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">ROAS</div>
-      <div class="kpi-value">20.04</div>
-      <div class="kpi-sub"><span class="delta-up">↑</span> vs March</div>
-    </div>
-    <div class="kpi-card">
       <div class="kpi-label">MER</div>
       <div class="kpi-value">31.45</div>
       <div class="kpi-sub"><span class="delta-up">↑ 44%</span> vs March</div>
-    </div>
-    <div class="kpi-card flat">
-      <div class="kpi-label">Purchase Value</div>
-      <div class="kpi-value">$389K</div>
-      <div class="kpi-sub"><span class="delta-down">↓</span> vs March</div>
-    </div>
-    <div class="kpi-card flat">
-      <div class="kpi-label">Gross Profit</div>
-      <div class="kpi-value">$96.1K</div>
-      <div class="kpi-sub"><span class="delta-down">Slightly down</span> vs March</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Net Profit</div>
       <div class="kpi-value">$76.7K</div>
       <div class="kpi-sub"><span class="delta-up">↑ 8%</span> vs March</div>
+    </div>
+    <div class="kpi-card flat">
+      <div class="kpi-label">ROAS (April)</div>
+      <div class="kpi-value">20.04</div>
+      <div class="kpi-sub">April-only figure</div>
+    </div>
+    <div class="kpi-card flat">
+      <div class="kpi-label">Purchase Value (April)</div>
+      <div class="kpi-value">$389K</div>
+      <div class="kpi-sub">April-only figure</div>
+    </div>
+    <div class="kpi-card flat">
+      <div class="kpi-label">Gross Profit (April)</div>
+      <div class="kpi-value">$96.1K</div>
+      <div class="kpi-sub">April-only figure</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Account Status</div>
@@ -244,19 +290,21 @@
   </div>
 
   <div class="insight-card">
-    <h3>Performance Interpretation</h3>
+    <h3>How to Read This</h3>
     <ul>
-      <li>Reduced spend did not impact revenue, indicating inefficiency was removed.</li>
-      <li>Higher MER reflects better capital efficiency.</li>
-      <li>Increased net profit reflects stronger bottom-line performance.</li>
+      <li>Reduced spend did not impact revenue, indicating inefficient spend was successfully removed.</li>
+      <li>Higher MER reflects better capital efficiency on every dollar going into ads.</li>
+      <li>Higher net profit means the account is healthier at the bottom line, not just on attributed revenue.</li>
     </ul>
-    <p style="margin-top:10px;"><strong>Summary:</strong> the account is generating maximum output with optimized input, a strong foundation for scaling.</p>
+    <p style="margin-top:10px;"><strong>Net effect:</strong> the account is now generating maximum output from optimized input. That is the foundation needed before scaling.</p>
   </div>
 
-  <!-- 3. PMax Performance -->
-  <h2 class="section-title">New PMax Campaign Performance</h2>
+  <!-- 2. PMax Performance -->
+  <h2 class="section-title">2. New PMax Campaign Performance</h2>
+  <p class="section-intro">Two new PMax campaigns launched on March 14. Each is broken out below across three windows: pre-launch (where the products lived inside other campaigns), and the first two post-launch windows.</p>
 
-  <h3 class="section-sub">Top Brand PMax (Top Performing Products)</h3>
+  <h3 class="section-sub">Bestseller Brands PMax</h3>
+  <div class="section-sub-meta">A PMax campaign isolated to the highest-revenue vendor brands in the catalog. Its job is to protect and tighten efficiency on products that already sell well.</div>
   <div class="phase-grid">
     <div class="phase-card">
       <div class="phase-label">Pre-Launch</div>
@@ -269,7 +317,7 @@
       </ul>
     </div>
     <div class="phase-card live">
-      <div class="phase-label">Window 1</div>
+      <div class="phase-label">Window 1 (Live)</div>
       <div class="phase-window">Mar 14 - 26</div>
       <ul>
         <li><span>Revenue</span><span>$126,777</span></li>
@@ -279,7 +327,7 @@
       </ul>
     </div>
     <div class="phase-card live">
-      <div class="phase-label">Window 2</div>
+      <div class="phase-label">Window 2 (Live)</div>
       <div class="phase-window">Mar 27 - Apr 8</div>
       <ul>
         <li><span>Revenue</span><span>$122,227</span></li>
@@ -290,15 +338,17 @@
     </div>
   </div>
   <div class="insight-card">
-    <h3>Insight: Top Brand PMax</h3>
+    <h3>What this tells us</h3>
     <ul>
-      <li>Revenue remained stable while spend decreased significantly.</li>
-      <li>MER improved consistently across phases.</li>
+      <li>Revenue held essentially flat across all three windows.</li>
+      <li>Spend dropped ~40% from pre-launch to Window 2.</li>
+      <li>MER climbed steadily from 26.6x to ~41.2x.</li>
     </ul>
-    <p style="margin-top:8px;"><strong>Summary:</strong> Top Brand PMax is an efficiency-driven campaign, reducing wasted spend without driving incremental revenue.</p>
+    <p style="margin-top:8px;"><strong>Role:</strong> this is an <em>efficiency play</em>, not a growth lever. It saves money on revenue that was already coming in. Keep it running, do not over-invest.</p>
   </div>
 
-  <h3 class="section-sub">Low Spend Brand PMax (Low Spend, High MER Products)</h3>
+  <h3 class="section-sub">Underspent Brands PMax</h3>
+  <div class="section-sub-meta">A PMax campaign isolated to vendor brands that historically received very little ad investment but were converting at strong organic efficiency. Its job is to grow the top line by turning on a previously-quiet segment.</div>
   <div class="phase-grid">
     <div class="phase-card">
       <div class="phase-label">Pre-Launch</div>
@@ -311,7 +361,7 @@
       </ul>
     </div>
     <div class="phase-card live">
-      <div class="phase-label">Window 1</div>
+      <div class="phase-label">Window 1 (Live)</div>
       <div class="phase-window">Mar 14 - 26</div>
       <ul>
         <li><span>Revenue</span><span>$41,920</span></li>
@@ -321,7 +371,7 @@
       </ul>
     </div>
     <div class="phase-card live">
-      <div class="phase-label">Window 2</div>
+      <div class="phase-label">Window 2 (Live)</div>
       <div class="phase-window">Mar 27 - Apr 8</div>
       <ul>
         <li><span>Revenue</span><span>$75,337</span></li>
@@ -332,41 +382,35 @@
     </div>
   </div>
   <div class="insight-card">
-    <h3>Insight: Low Spend Brand PMax</h3>
+    <h3>What this tells us</h3>
     <ul>
-      <li>Learning phase dip followed by strong recovery.</li>
-      <li>Revenue exceeded pre-launch levels with reduced spend.</li>
-      <li>MER more than doubled.</li>
+      <li>Window 1 was a learning-phase dip (typical for any new PMax campaign).</li>
+      <li>By Window 2 it had recovered and exceeded pre-launch revenue, on roughly half the spend.</li>
+      <li>MER more than doubled (32.8x → ~69.9x).</li>
     </ul>
-    <p style="margin-top:8px;"><strong>Summary:</strong> Low Spend PMax is the primary growth engine, delivering both revenue uplift and efficiency gains.</p>
+    <p style="margin-top:8px;"><strong>Role:</strong> this is the <em>growth engine</em> of the restructure. It is delivering both incremental revenue and stronger efficiency at the same time, which is rare. This is the campaign we are scaling next.</p>
   </div>
 
-  <div class="insight-card">
-    <h3>Combined Campaign Impact</h3>
-    <ul>
-      <li>Revenue increased while spend decreased.</li>
-      <li>Efficiency improved across all targeted segments.</li>
-    </ul>
-    <p style="margin-top:8px;"><strong>Summary:</strong> the campaign structure is now optimized to deliver higher returns at lower cost.</p>
-  </div>
-
-  <!-- 4. March vs April Vendor Comparison -->
-  <h2 class="section-title">March vs April: Vendor Group Comparison</h2>
+  <!-- 3. Vendor Group Comparison -->
+  <h2 class="section-title">3. March vs April: Vendor Group Comparison</h2>
+  <p class="section-intro">Same view as above, rolled up to the underlying vendor groups (regardless of which campaign served them).</p>
 
   <div class="compare-grid">
     <div class="compare-card">
-      <h3>Top Brand Vendors</h3>
+      <h3>Bestseller Brand Group</h3>
+      <div class="sub">Top-revenue vendor brands across the catalog</div>
       <ul>
         <li><span>Revenue</span><span>~$289.7K → ~$286.3K</span></li>
         <li><span>Revenue change</span><span>Flat</span></li>
         <li><span>Spend</span><span class="delta-down">↓ 20%</span></li>
         <li><span>MER</span><span class="delta-up">↑ 23%</span></li>
       </ul>
-      <span class="verdict">Efficient, not growth-driving</span>
+      <span class="verdict">Efficient, not the growth lever</span>
     </div>
 
     <div class="compare-card win">
-      <h3>Low Spend Vendors</h3>
+      <h3>Underspent Brand Group</h3>
+      <div class="sub">Vendor brands previously starved of ad spend</div>
       <ul>
         <li><span>Revenue</span><span>$123.9K → $196.8K</span></li>
         <li><span>Revenue change</span><span class="delta-up">↑ 59%</span></li>
@@ -378,18 +422,19 @@
   </div>
 
   <div class="insight-card">
-    <h3>Combined Impact</h3>
+    <h3>Combined Group Impact</h3>
     <ul>
-      <li>Revenue: <span class="delta-up">↑ 16.8%</span></li>
-      <li>Spend: <span class="delta-down">↓ 23.4%</span></li>
+      <li>Revenue across both groups: <span class="delta-up">↑ 16.8%</span></li>
+      <li>Spend across both groups: <span class="delta-down">↓ 23.4%</span></li>
     </ul>
-    <p style="margin-top:8px;"><strong>Summary:</strong> the ideal performance outcome, scaling revenue while reducing spend, driven primarily by Low Spend PMax.</p>
+    <p style="margin-top:8px;">More revenue at lower cost, driven by the Underspent Brand group.</p>
   </div>
 
-  <!-- 5. Campaign Breakdown -->
-  <h2 class="section-title">Campaign Performance Breakdown</h2>
+  <!-- 4. Campaign Breakdown -->
+  <h2 class="section-title">4. Campaign Performance Breakdown</h2>
 
   <h3 class="section-sub">Primary Revenue Drivers</h3>
+  <div class="section-sub-meta">The three campaigns producing the largest absolute revenue in April.</div>
   <div class="table-card">
     <table>
       <thead>
@@ -407,14 +452,14 @@
           <td class="num">~$7K</td>
           <td class="num">~$135K</td>
           <td class="num">~19.4x</td>
-          <td class="note">Core revenue engine</td>
+          <td class="note">Catalog-wide core revenue engine</td>
         </tr>
         <tr>
           <td class="label">Shop PMax</td>
           <td class="num">~$6.7K</td>
           <td class="num">~$122K</td>
           <td class="num">~18.3x</td>
-          <td class="note">Catalog-wide volume driver</td>
+          <td class="note">Shopping-feed volume driver</td>
         </tr>
         <tr>
           <td class="label">RMK PMax (Retargeting)</td>
@@ -428,6 +473,7 @@
   </div>
 
   <h3 class="section-sub">Supporting Campaigns</h3>
+  <div class="section-sub-meta">Smaller campaigns that complement the primary drivers.</div>
   <div class="table-card">
     <table>
       <thead>
@@ -441,113 +487,81 @@
         <tr>
           <td class="label">Branded Search</td>
           <td class="num">~53x ROAS</td>
-          <td class="note">High-intent demand capture</td>
+          <td class="note">Captures customers already searching for the brand</td>
         </tr>
         <tr>
-          <td class="label">Low Spend PMax</td>
-          <td class="num">High MER</td>
-          <td class="note">Scaling efficiently, growth lever</td>
+          <td class="label">Underspent Brands PMax</td>
+          <td class="num">High MER, scaling</td>
+          <td class="note">Growth lever (covered in detail above)</td>
         </tr>
         <tr>
-          <td class="label">Top Brand PMax</td>
+          <td class="label">Bestseller Brands PMax</td>
           <td class="num">Strong MER</td>
-          <td class="note">Lower ROAS, strong MER contribution</td>
+          <td class="note">Efficiency play (covered in detail above)</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="insight-card">
-    <h3>Channel Mix Insight</h3>
-    <p>Revenue is concentrated in a few high-performing core campaigns, with retargeting and branded search offering the highest efficiency upside.</p>
+  <!-- 5. Key Takeaways -->
+  <h2 class="section-title">5. Key Takeaways</h2>
+  <div class="takeaway-grid">
+    <div class="takeaway"><div class="dot"></div><p><strong>MER lifted account-wide</strong> by 44% in April vs March.</p></div>
+    <div class="takeaway"><div class="dot"></div><p><strong>Underspent Brands PMax</strong> is the main revenue growth driver since launch.</p></div>
+    <div class="takeaway"><div class="dot"></div><p><strong>Bestseller Brands PMax</strong> is acting as an efficiency layer, not a growth layer.</p></div>
+    <div class="takeaway"><div class="dot"></div><p><strong>Learning-phase volatility</strong> from the new campaigns has stabilized.</p></div>
+    <div class="takeaway"><div class="dot"></div><p><strong>Profitability is now locked in,</strong> which clears the path for top-line scaling.</p></div>
+    <div class="takeaway"><div class="dot"></div><p><strong>The next move is single-lever:</strong> push more budget into the one campaign that's already proving it.</p></div>
   </div>
 
-  <!-- 6. Key Takeaways -->
-  <h2 class="section-title">Key Takeaways</h2>
-  <div class="takeaway-grid">
-    <div class="takeaway"><div class="dot"></div><p><strong>MER improved significantly</strong> across the account (+44%).</p></div>
-    <div class="takeaway"><div class="dot"></div><p><strong>Low Spend PMax</strong> is the main revenue growth driver.</p></div>
-    <div class="takeaway"><div class="dot"></div><p><strong>Top Brand PMax</strong> improves cost efficiency.</p></div>
-    <div class="takeaway"><div class="dot"></div><p><strong>Learning phase volatility</strong> has stabilized.</p></div>
-    <div class="takeaway"><div class="dot"></div><p><strong>Retargeting and branded</strong> remain under-scaled opportunities.</p></div>
-    <div class="takeaway"><div class="dot"></div><p><strong>High-efficiency, high-control</strong> structure now in place.</p></div>
+  <!-- 6. Current Observation -->
+  <h2 class="section-title">6. Current Observation</h2>
+  <div class="insight-card">
+    <h3>The campaigns are budget-constrained, not performance-constrained</h3>
+    <p>The two new PMax campaigns are operating at relatively low spend levels because of historical budget caps, not because their performance has tapered.</p>
+    <p>The signal is clearest on the Underspent Brands PMax: revenue grew 59% while spend fell 31%, taking MER from ~33x to ~77x. A campaign that converts more efficiently as spend goes down is a campaign with room to take more spend.</p>
+    <p style="margin-top:6px;"><strong>Read:</strong> performance is ahead of investment. The fix is to invest more, in the right place.</p>
   </div>
 
   <!-- 7. Scaling Strategy -->
-  <h2 class="section-title">Scaling Strategy &amp; Next Steps</h2>
+  <h2 class="section-title">7. Scaling Strategy &amp; Next Steps</h2>
 
-  <div class="insight-card">
-    <h3>Current Observation</h3>
-    <p>Both Top Brand PMax and Low Spend Brand PMax are operating at relatively low spend due to budget limitations, despite showing strong efficiency (high MER).</p>
-    <p>Performance indicates these campaigns are <strong>not constrained by performance, but by budget</strong>, making them strong candidates for scaling.</p>
+  <div class="plan-headline">
+    <div class="eyebrow">The Plan</div>
+    <h3>Scale the Underspent Brands PMax. Hold everything else steady.</h3>
   </div>
 
-  <div class="steps-card">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div>
-        <h4>Scale Low Spend Brand PMax (Priority)</h4>
-        <ul>
-          <li>Already showing strong growth and efficiency.</li>
-          <li>Budget has been increased to accelerate momentum.</li>
-          <li>Expected to continue driving incremental revenue at high MER.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div>
-        <h4>Gradually Scale Top Brand PMax</h4>
-        <ul>
-          <li>Strong MER improvement (~26x → ~40x).</li>
-          <li>Proven ability to maintain revenue with lower spend.</li>
-          <li>Strategy: controlled expansion without efficiency loss.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div>
-        <h4>Increase Investment in All Products PMax</h4>
-        <ul>
-          <li>Highest spending campaign in the account.</li>
-          <li>Consistently strong ROAS (~19x).</li>
-          <li>Key driver of overall revenue.</li>
-          <li>Strategy: incremental budget increases to push top-line growth while maintaining efficiency.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div>
-        <h4>Scale Brand Search Campaigns</h4>
-        <ul>
-          <li>Focus on capturing high-intent demand.</li>
-          <li>Complements PMax by strengthening lower-funnel performance.</li>
-          <li>Strategy: gradually increase budget to improve coverage and conversions.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <div class="plan-card">
+    <span class="status-pill">Already in motion</span>
 
-  <div class="insight-card">
-    <h3>Overall Scaling Approach</h3>
+    <h4>What we're doing</h4>
+    <p>Increasing the Underspent Brands PMax budget incrementally. We have already begun this scaling, and the campaign continues to hold strong MER as more spend goes in.</p>
+
+    <h4>Why only this one</h4>
     <ul>
-      <li>Move account spend toward <strong>$8K - $9K per week</strong> range.</li>
-      <li>Prioritize high MER and high ROAS campaigns.</li>
-      <li>Ensure scaling is controlled and efficiency-led, not aggressive.</li>
+      <li>It's the campaign that drove April's gains. Every other campaign either held flat or improved on lower spend.</li>
+      <li>Window-over-window the Underspent Brands PMax is still showing rising MER as spend changes, which is the cleanest signal in the account that headroom exists.</li>
+      <li>The other campaigns (Bestseller Brands PMax, All Products PMax, Branded Search) are working at their natural cap. Pushing more spend into them risks reversing the efficiency we just earned.</li>
+    </ul>
+
+    <h4>How we'll know it's working</h4>
+    <ul>
+      <li>Top-line revenue moves up, not just attributed revenue.</li>
+      <li>MER on the Underspent Brands PMax stays elevated as budget rises (target: hold above ~50x through the next two reporting windows).</li>
+      <li>Account-level MER stays at or above April's 31.45.</li>
+    </ul>
+
+    <h4>What we are deliberately not doing this month</h4>
+    <ul>
+      <li>Not aggressively scaling Bestseller Brands PMax, All Products PMax, or Branded Search. These are mature; aggressive scaling here would dilute efficiency, not grow revenue.</li>
+      <li>Not adding new campaigns. The discipline this month is single-lever: do one thing well.</li>
     </ul>
   </div>
 
-  <div class="tldr" style="margin-top: 24px;">
-    <h2>Summary &amp; Roles</h2>
-    <ul>
-      <li><strong>Low Spend PMax</strong> - primary growth lever</li>
-      <li><strong>Top Brand PMax</strong> - efficiency + controlled scaling</li>
-      <li><strong>All Products PMax</strong> - core revenue expansion driver</li>
-      <li><strong>Brand Search</strong> - demand capture + conversion support</li>
-    </ul>
-    <p style="margin-top:12px;">The account will be scaled in a structured, performance-led manner, ensuring top-line growth while maintaining strong MER control.</p>
+  <div class="hero-callout" style="margin-top: 24px;">
+    <div class="eyebrow">Bottom Line</div>
+    <h2 style="font-size: 18pt;">Profitability is solved. Top-line growth is the next job, and we already know which lever does it.</h2>
+    <p>April proved the restructure works. The same revenue at lower cost is the result of cutting waste; the next phase is converting that earned headroom into actual top-line growth by scaling the one campaign that's been carrying the gains.</p>
   </div>
 
   <footer>
